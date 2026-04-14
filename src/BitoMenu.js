@@ -21,7 +21,7 @@ function getCatImage(category, items) {
   return found?.image || null;
 }
 
-function MenuItemRow({ item }) {
+function MenuItemRow({ item, inline }) {
   const hasLabels = item.variants.some((v) => v.label);
 
   if (item.variants.length === 1 && !hasLabels) {
@@ -33,6 +33,23 @@ function MenuItemRow({ item }) {
         <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 6, marginBottom: 3 }} />
         <span style={{ fontSize: "1vw", fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>
           {item.variants[0].price}
+        </span>
+      </div>
+    );
+  }
+
+  if (inline) {
+    const priceStr = item.variants
+      .map((v) => (v.label ? `${v.label} ${v.price}` : v.price))
+      .join(" / ");
+    return (
+      <div style={{ display: "flex", alignItems: "baseline", gap: 4, padding: "2px 0" }}>
+        <span style={{ fontSize: "1vw", fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
+          {item.name}
+        </span>
+        <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 6, marginBottom: 3 }} />
+        <span style={{ fontSize: "0.88vw", fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>
+          {priceStr}
         </span>
       </div>
     );
@@ -56,7 +73,7 @@ function MenuItemRow({ item }) {
   );
 }
 
-function CategoryCard({ category, subtitle, items }) {
+function CategoryCard({ category, subtitle, items, inline }) {
   const image = getCatImage(category, items);
 
   return (
@@ -117,7 +134,7 @@ function CategoryCard({ category, subtitle, items }) {
         </h3>
       </div>
       {items.map((item, idx) => (
-        <MenuItemRow key={idx} item={item} />
+        <MenuItemRow key={idx} item={item} inline={inline} />
       ))}
     </div>
   );
@@ -266,7 +283,7 @@ export default function BitoMenu() {
           {/* O'ng ustun: ICHIMLIKLAR */}
           {ichimliklar && (
             <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-              <CategoryCard {...ichimliklar} />
+              <CategoryCard {...ichimliklar} inline />
             </div>
           )}
         </main>
