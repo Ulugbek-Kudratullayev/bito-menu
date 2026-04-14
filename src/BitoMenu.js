@@ -26,12 +26,12 @@ function MenuItemRow({ item, inline }) {
 
   if (item.variants.length === 1 && !hasLabels) {
     return (
-      <div style={{ display: "flex", alignItems: "baseline", gap: 6, padding: "3px 0" }}>
-        <span style={{ fontSize: 19, fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 5, padding: "0.2vh 0" }}>
+        <span style={{ fontSize: "1.65vh", fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
           {item.name}
         </span>
-        <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 8, marginBottom: 3 }} />
-        <span style={{ fontSize: 19, fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>
+        <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 6, marginBottom: 3 }} />
+        <span style={{ fontSize: "1.65vh", fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>
           {item.variants[0].price}
         </span>
       </div>
@@ -40,19 +40,19 @@ function MenuItemRow({ item, inline }) {
 
   if (inline) {
     return (
-      <div style={{ display: "flex", alignItems: "baseline", gap: 6, padding: "3px 0" }}>
-        <span style={{ fontSize: 19, fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 5, padding: "0.2vh 0" }}>
+        <span style={{ fontSize: "1.65vh", fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
           {item.name}
         </span>
-        <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 8, marginBottom: 3 }} />
+        <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 6, marginBottom: 3 }} />
         <span style={{ whiteSpace: "nowrap" }}>
           {item.variants.map((v, i) => (
             <React.Fragment key={i}>
-              {i > 0 && <span style={{ color: "#444", fontSize: 15 }}> / </span>}
+              {i > 0 && <span style={{ color: "#444", fontSize: "1.3vh" }}> / </span>}
               {v.label && (
-                <span style={{ fontSize: 16, color: "#999" }}>{v.label} </span>
+                <span style={{ fontSize: "1.4vh", color: "#999" }}>{v.label} </span>
               )}
-              <span style={{ fontSize: 18, fontWeight: 700, color: gold }}>{v.price}</span>
+              <span style={{ fontSize: "1.55vh", fontWeight: 700, color: gold }}>{v.price}</span>
             </React.Fragment>
           ))}
         </span>
@@ -61,17 +61,17 @@ function MenuItemRow({ item, inline }) {
   }
 
   return (
-    <div style={{ padding: "3px 0" }}>
-      <div style={{ fontSize: 19, fontWeight: 500, color: "#ccc" }}>
+    <div style={{ padding: "0.2vh 0" }}>
+      <div style={{ fontSize: "1.65vh", fontWeight: 500, color: "#ccc" }}>
         {item.name}
       </div>
       {item.variants.map((v, i) => (
-        <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 5, paddingLeft: 12, padding: "2px 0 2px 12px" }}>
+        <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 4, paddingLeft: "1vh", padding: "0.1vh 0 0.1vh 1vh" }}>
           {v.label && (
-            <span style={{ fontSize: 17, color: "#888", whiteSpace: "nowrap" }}>{v.label}</span>
+            <span style={{ fontSize: "1.45vh", color: "#888", whiteSpace: "nowrap" }}>{v.label}</span>
           )}
-          <span style={{ flex: 1, borderBottom: "1px dotted #222", minWidth: 8, marginBottom: 3 }} />
-          <span style={{ fontSize: 18, fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>{v.price}</span>
+          <span style={{ flex: 1, borderBottom: "1px dotted #222", minWidth: 6, marginBottom: 3 }} />
+          <span style={{ fontSize: "1.5vh", fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>{v.price}</span>
         </div>
       ))}
     </div>
@@ -85,8 +85,8 @@ function CategoryCard({ category, subtitle, items, inline }) {
     <div
       style={{
         background: cardBg,
-        borderRadius: 10,
-        padding: "12px 16px",
+        borderRadius: "0.8vh",
+        padding: "1vh 1.2vh",
         border: "1px solid #1a1a1a",
       }}
     >
@@ -94,17 +94,17 @@ function CategoryCard({ category, subtitle, items, inline }) {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 10,
-          marginBottom: 6,
-          paddingBottom: 6,
+          gap: "0.8vh",
+          marginBottom: "0.4vh",
+          paddingBottom: "0.4vh",
           borderBottom: `1px solid ${gold}25`,
         }}
       >
         {image && (
           <div
             style={{
-              width: 52,
-              height: 52,
+              width: "4.5vh",
+              height: "4.5vh",
               borderRadius: "50%",
               overflow: "hidden",
               flexShrink: 0,
@@ -121,7 +121,7 @@ function CategoryCard({ category, subtitle, items, inline }) {
         )}
         <h3
           style={{
-            fontSize: 26,
+            fontSize: "2.2vh",
             fontWeight: 700,
             color: gold,
             fontFamily: "'Oswald', sans-serif",
@@ -132,7 +132,7 @@ function CategoryCard({ category, subtitle, items, inline }) {
         >
           {category}
           {subtitle && (
-            <span style={{ fontSize: 14, color: "#666", fontWeight: 400, marginLeft: 6, fontFamily: "'Inter', sans-serif" }}>
+            <span style={{ fontSize: "1.2vh", color: "#666", fontWeight: 400, marginLeft: "0.5vh", fontFamily: "'Inter', sans-serif" }}>
               ({subtitle})
             </span>
           )}
@@ -174,19 +174,18 @@ export default function BitoMenu() {
   return (
     <div
       style={{
-        width: 1920,
-        height: 1080,
+        width: "100vw",
+        height: "100vh",
         backgroundColor: "#080808",
         fontFamily: "'Inter', sans-serif",
         display: "flex",
         overflow: "hidden",
-        margin: "0 auto",
       }}
     >
       {/* Chap BITO strip */}
       <div
         style={{
-          width: 60,
+          width: "3.5vw",
           backgroundColor: "#050505",
           display: "flex",
           flexDirection: "column",
@@ -202,12 +201,12 @@ export default function BitoMenu() {
             transform: "rotate(180deg)",
             display: "flex",
             alignItems: "center",
-            gap: 16,
+            gap: "1.5vh",
           }}
         >
           <span
             style={{
-              fontSize: 38,
+              fontSize: "3.5vh",
               fontWeight: 800,
               color: "#fff",
               fontFamily: "'Oswald', sans-serif",
@@ -218,7 +217,7 @@ export default function BitoMenu() {
           </span>
           <span
             style={{
-              fontSize: 14,
+              fontSize: "1.2vh",
               fontWeight: 600,
               color: gold,
               fontFamily: "'Oswald', sans-serif",
@@ -246,7 +245,7 @@ export default function BitoMenu() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          padding: "14px 22px 10px",
+          padding: "1.2vh 1.5vw 0.8vh",
           minWidth: 0,
         }}
       >
@@ -254,7 +253,7 @@ export default function BitoMenu() {
           style={{
             flex: 1,
             display: "flex",
-            gap: 14,
+            gap: "1vw",
             minHeight: 0,
           }}
         >
@@ -266,7 +265,7 @@ export default function BitoMenu() {
                 flex: 1,
                 display: "flex",
                 flexDirection: "column",
-                gap: 12,
+                gap: "1vh",
               }}
             >
               {col.map((cat, idx) => (
@@ -296,8 +295,8 @@ export default function BitoMenu() {
         <footer
           style={{
             flexShrink: 0,
-            marginTop: 10,
-            paddingTop: 8,
+            marginTop: "0.8vh",
+            paddingTop: "0.6vh",
             borderTop: `1px solid ${gold}20`,
             display: "flex",
             alignItems: "center",
@@ -305,10 +304,10 @@ export default function BitoMenu() {
           }}
         >
           {komboData && (
-            <div style={{ display: "flex", gap: 18, alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "1.5vw", alignItems: "center" }}>
               <span
                 style={{
-                  fontSize: 22,
+                  fontSize: "2vh",
                   fontWeight: 700,
                   color: gold,
                   fontFamily: "'Oswald', sans-serif",
@@ -323,21 +322,21 @@ export default function BitoMenu() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 12,
+                    gap: "0.8vw",
                     background: cardBg,
-                    padding: "8px 18px",
-                    borderRadius: 8,
+                    padding: "0.5vh 1.2vw",
+                    borderRadius: "0.6vh",
                     border: `1px solid ${gold}15`,
                   }}
                 >
-                  <span style={{ fontSize: 21, fontWeight: 700, color: "#fff" }}>
+                  <span style={{ fontSize: "1.8vh", fontWeight: 700, color: "#fff" }}>
                     {item.name}
                   </span>
-                  <span style={{ fontSize: 23, fontWeight: 800, color: gold }}>
+                  <span style={{ fontSize: "2vh", fontWeight: 800, color: gold }}>
                     {item.variants[0].price}
                   </span>
                   {item.description && (
-                    <span style={{ fontSize: 15, color: "#999", fontStyle: "italic" }}>
+                    <span style={{ fontSize: "1.3vh", color: "#999", fontStyle: "italic" }}>
                       ({item.description})
                     </span>
                   )}
@@ -346,9 +345,9 @@ export default function BitoMenu() {
             </div>
           )}
 
-          <div style={{ display: "flex", alignItems: "center", gap: 22, color: "#555", fontSize: 15 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "1.5vw", color: "#555", fontSize: "1.3vh" }}>
             <span>+998877707711</span>
-            <span style={{ fontSize: 22, fontWeight: 700, color: gold, fontFamily: "'Oswald', sans-serif", letterSpacing: "0.1em" }}>
+            <span style={{ fontSize: "1.8vh", fontWeight: 700, color: gold, fontFamily: "'Oswald', sans-serif", letterSpacing: "0.1em" }}>
               BITO
             </span>
             <span>Andijon</span>
