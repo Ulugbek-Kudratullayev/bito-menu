@@ -78,7 +78,7 @@ function MenuItemRow({ item, inline }) {
   );
 }
 
-function CategoryCard({ category, subtitle, items, inline }) {
+function CategoryCard({ category, subtitle, items, inline, style: extraStyle }) {
   const image = getCatImage(category, items);
 
   return (
@@ -88,6 +88,7 @@ function CategoryCard({ category, subtitle, items, inline }) {
         borderRadius: "0.8vh",
         padding: "1vh 1.2vh",
         border: "1px solid #1a1a1a",
+        ...extraStyle,
       }}
     >
       <div
@@ -174,8 +175,11 @@ export default function BitoMenu() {
   return (
     <div
       style={{
-        width: "100vw",
-        height: "100vh",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         backgroundColor: "#080808",
         fontFamily: "'Inter', sans-serif",
         display: "flex",
@@ -245,7 +249,7 @@ export default function BitoMenu() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          padding: "1.2vh 1.5vw 0.8vh",
+          padding: "1vh 0.8vw 0.6vh",
           minWidth: 0,
         }}
       >
@@ -253,7 +257,7 @@ export default function BitoMenu() {
           style={{
             flex: 1,
             display: "flex",
-            gap: "1vw",
+            gap: "0.6vw",
             minHeight: 0,
           }}
         >
@@ -265,11 +269,11 @@ export default function BitoMenu() {
                 flex: 1,
                 display: "flex",
                 flexDirection: "column",
-                gap: "1vh",
+                gap: "0.6vh",
               }}
             >
               {col.map((cat, idx) => (
-                <CategoryCard key={idx} {...cat} />
+                <CategoryCard key={idx} {...cat} style={{ flex: 1 }} />
               ))}
             </div>
           ))}
@@ -286,7 +290,7 @@ export default function BitoMenu() {
           {/* O'ng ustun: ICHIMLIKLAR */}
           {ichimliklar && (
             <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-              <CategoryCard {...ichimliklar} inline />
+              <CategoryCard {...ichimliklar} inline style={{ flex: 1 }} />
             </div>
           )}
         </main>
@@ -295,8 +299,8 @@ export default function BitoMenu() {
         <footer
           style={{
             flexShrink: 0,
-            marginTop: "0.8vh",
-            paddingTop: "0.6vh",
+            marginTop: "0.6vh",
+            paddingTop: "0.5vh",
             borderTop: `1px solid ${gold}20`,
             display: "flex",
             alignItems: "center",
