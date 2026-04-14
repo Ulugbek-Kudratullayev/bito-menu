@@ -39,17 +39,22 @@ function MenuItemRow({ item, inline }) {
   }
 
   if (inline) {
-    const priceStr = item.variants
-      .map((v) => (v.label ? `${v.label} ${v.price}` : v.price))
-      .join(" / ");
     return (
       <div style={{ display: "flex", alignItems: "baseline", gap: 4, padding: "2px 0" }}>
         <span style={{ fontSize: "1vw", fontWeight: 500, color: "#ccc", whiteSpace: "nowrap" }}>
           {item.name}
         </span>
         <span style={{ flex: 1, borderBottom: "1px dotted #2a2a2a", minWidth: 6, marginBottom: 3 }} />
-        <span style={{ fontSize: "0.88vw", fontWeight: 700, color: gold, whiteSpace: "nowrap" }}>
-          {priceStr}
+        <span style={{ whiteSpace: "nowrap" }}>
+          {item.variants.map((v, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <span style={{ color: "#444", fontSize: "0.8vw" }}> / </span>}
+              {v.label && (
+                <span style={{ fontSize: "0.82vw", color: "#999" }}>{v.label} </span>
+              )}
+              <span style={{ fontSize: "0.9vw", fontWeight: 700, color: gold }}>{v.price}</span>
+            </React.Fragment>
+          ))}
         </span>
       </div>
     );
