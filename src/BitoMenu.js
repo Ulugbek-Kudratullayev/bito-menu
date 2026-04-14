@@ -324,21 +324,21 @@ export default function BitoMenu() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.5vw",
+                    gap: "0.6vw",
                     background: cardBg,
-                    padding: "0.3vw 0.8vw",
-                    borderRadius: "0.3vw",
+                    padding: "0.4vw 1vw",
+                    borderRadius: "0.4vw",
                     border: `1px solid ${gold}15`,
                   }}
                 >
-                  <span style={{ fontSize: "0.9vw", fontWeight: 600, color: "#ccc" }}>
+                  <span style={{ fontSize: "1.1vw", fontWeight: 700, color: "#fff" }}>
                     {item.name}
                   </span>
-                  <span style={{ fontSize: "0.95vw", fontWeight: 700, color: gold }}>
+                  <span style={{ fontSize: "1.2vw", fontWeight: 800, color: gold }}>
                     {item.variants[0].price}
                   </span>
                   {item.description && (
-                    <span style={{ fontSize: "0.6vw", color: "#666", fontStyle: "italic" }}>
+                    <span style={{ fontSize: "0.8vw", color: "#999", fontStyle: "italic" }}>
                       ({item.description})
                     </span>
                   )}
