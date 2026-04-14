@@ -53,10 +53,14 @@ function transformApiData(data) {
       ? p.combo_items.map((c) => c.product_name).join(" + ")
       : null;
 
+    const staticFallback = staticMenuData
+      .find((c) => c.category === catName)
+      ?.items.find((i) => i.name === p.name);
+
     grouped[catName].items.push({
       name: p.name,
       image,
-      description: p.description || comboDesc || undefined,
+      description: p.description || comboDesc || staticFallback?.description || undefined,
       variants,
     });
   }
